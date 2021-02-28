@@ -1,0 +1,67 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    height: 100px;
+}
+
+#logo {
+    font-size: 3em;
+    padding: 0.2em;
+}
+
+#wrapper {
+    width: 80%;
+    margin: auto;
+}
+
+#replies {
+    width: 90%;
+    margin: auto;
+}
+
+#op-post {
+    margin-bottom: 30px;
+}
+
+.post {
+    background: #DCDCDC;
+    margin-bottom: 10px;
+}
+
+.post-head {
+    background: #BEBEBE;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.reply-form {
+    width: 60%;
+    margin: 0 auto 10px auto;
+}
+
+.reply-form textarea {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 200px;
+}
+
+.label-wrapper {
+    margin-bottom: 10px;
+}
+
+.reply-form-head {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
