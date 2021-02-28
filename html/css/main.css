@@ -35,6 +35,16 @@ header {
     background: #BEBEBE;
     margin-bottom: 5px;
     font-weight: bold;
+    display: flex;
+    padding: 5px;
+}
+
+.post-body {
+    padding: 5px;
+}
+
+.post-date {
+    margin-left: auto;
 }
 
 .reply-form {
