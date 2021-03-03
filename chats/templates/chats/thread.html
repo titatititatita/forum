@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'chats/main.css' %}">
+    <title>Thread #123</title>
+</head>
+<body>
+<header>
+    <div id="logo"><a href="{% url 'chats:index' %}">Anonymous Chat</a></div>
+</header>
+<div id="wrapper">
+    <div class="reply-form">
+        <div class="reply-form-head">Reply to a thread</div>
+        <form action="{% url 'chats:create_reply' thread.id %}" method="POST">
+            <div class="label-wrapper">
+                <label for="text">Your post</label>
+            </div>
+            {% csrf_token %}
+            <textarea class="body-input" name="text"></textarea>
+            <input type="submit" value="Reply">
+        </form>
+    </div>
+    <div id="op-post" class="post">
+        <div id="op-head" class="post-head">
+            <div class="post-num">Post #{{ thread.pk }}</div>
+            <div class="post-date">{{ thread.pub_date }}</div>
+        </div>
+        <div class="post-body">
+            {{ thread.text }}
+        </div>
+    </div>
+    {% if reply_list %}
+        <div id="replies">
+        <ul>
+            {% for reply in reply_list %}
+                <div class="reply post">
+                    <div class="post-head">
+                        <div class="post-num">Post #{{ reply.pk }}</div>
+                        <div class="post-date">{{ reply.pub_date }}</div>
+                    </div>
+                    <div class="post-body">
+                        {{ reply.text }}
+                    </div>
+                </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No replies at the moment :(</p>
+    {% endif %}
+    </div>
+    <div class="reply-form">
+        <div class="reply-form-head">Reply to a thread</div>
+        <form action="{% url 'chats:create_reply' thread.id %}" method="POST">
+            <div class="label-wrapper">
+                <label for="text">Your post</label>
+            </div>
+            {% csrf_token %}
+            <textarea class="body-input" name="text"></textarea>
+            <input type="submit" value="Reply">
+        </form>
+    </div>
+</div>
+<footer>
+    <div id="copyright">
+        Copyirght 2021
+    </div>
+</footer>
+</body>
+</html>

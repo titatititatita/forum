@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'chats/main.css' %}">
+    <title>Thread #123</title>
+</head>
+<body>
+<header>
+    <div id="logo"><a href="{% url 'chats:index' %}">Anonymous Chat</a></div>
+</header>
+<div id="wrapper">
+    <div class="reply-form">
+        <div class="reply-form-head">Start new thread!</div>
+        </form>
+        <form action="{% url 'chats:create_thread' %}" method="post">
+            <div class="label-wrapper">
+                <label for="text">Your post</label>
+            </div>
+            {% csrf_token %}
+            <textarea name="text" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="Open thread">
+        </form>
+    </div>
+    {% if thread_list %}
+        <ul>
+            {% for thread in thread_list %}
+                <div id="op-post" class="post">
+                    <div id="op-head" class="post-head">
+                        <div class="post-num"><a href="{% url 'chats:show_thread' thread.id %}"> Post
+                            #{{ thread.pk }} </a></div>
+                        <div class="post-date">{{ thread.pub_date }}</div>
+                    </div>
+                    <div class="post-body">
+                        {{ thread.text }}
+                    </div>
+                </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No threads are available.</p>
+    {% endif %}
+
+</div>
+<footer>
+    <div id="copyright">
+        Copyirght 2021
+    </div>
+</footer>
+</body>
+</html>
